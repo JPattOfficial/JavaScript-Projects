@@ -1,5 +1,5 @@
-let activePlayer = 'X';
-let selectedSquares = [];
+let selectedSquares = []; // Add this to store selected squares
+let activePlayer = 'X'; // Add this to store the current active player
 
 function placeXOrO(squareNumber) {
     if (!selectedSquares.some(element => element.includes(squareNumber))) {
@@ -10,14 +10,32 @@ function placeXOrO(squareNumber) {
             select.style.backgroundImage = 'url("./images/o.png")';
         }
         selectedSquares.push(squareNumber + activePlayer);
-        activePlayer = activePlayer === 'X' ? 'O' : 'X';
-
+        if (activePlayer === 'X') {
+            activePlayer = 'O';
+        } else {
+            activePlayer = 'X';
+        }
         if (activePlayer === 'O') {
             disableClick();
-            setTimeout(function() { computersTurn(); }, 1000)
+            setTimeout(function() { computersTurn(); }, 1000);
         }
-        checkWinConditions();
         return true;
+    }
+    return false; // Add this to indicate that the square has not been placed
+}
+
+function computersTurn() {
+    let success = false;
+    let pickASquare;
+    let availableSquares = Array.from({ length: 9 }, (_, i) => i.toString()).filter(sq => !selectedSquares.some(element => element.includes(sq)));
+
+    if (availableSquares.length > 0) {
+        while (!success) {
+            pickASquare = availableSquares[Math.floor(Math.random() * availableSquares.length)];
+            if (placeXOrO(pickASquare)) {
+                success = true;
+            }
+        }
     }
 }
 
