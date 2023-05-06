@@ -1,5 +1,5 @@
-let selectedSquares = []; // Add this to store selected squares
-let activePlayer = 'X'; // Add this to store the current active player
+let activePlayer = 'X';
+let selectedSquares = [];
 
 function placeXOrO(squareNumber) {
     if (!selectedSquares.some(element => element.includes(squareNumber))) {
@@ -10,6 +10,7 @@ function placeXOrO(squareNumber) {
             select.style.backgroundImage = 'url("./images/o.png")';
         }
         selectedSquares.push(squareNumber + activePlayer);
+        checkWinConditions();
         if (activePlayer === 'X') {
             activePlayer = 'O';
         } else {
@@ -22,23 +23,18 @@ function placeXOrO(squareNumber) {
         return true;
     }
     return false; // Add this to indicate that the square has not been placed
-}
 
-function computersTurn() {
-    let success = false;
-    let pickASquare;
-    let availableSquares = Array.from({ length: 9 }, (_, i) => i.toString()).filter(sq => !selectedSquares.some(element => element.includes(sq)));
-
-    if (availableSquares.length > 0) {
+    function computersTurn() {
+        let success = false;
+        let pickASquare;
         while (!success) {
-            pickASquare = availableSquares[Math.floor(Math.random() * availableSquares.length)];
-            if (placeXOrO(pickASquare)) {
-                success = true;
-            }
+            pickASquare = String(Math.floor(Math.random() * 9));
+            if (placeXOrO(pickASquare)){
+                placeXOrO(pickASquare);
+            };
         }
     }
 }
-
 function checkWinConditions() {
   if (arrayIncludes('0X', '1X', '2X')) { drawWinLine(50, 100, 558, 100) }
   else if (arrayIncludes('3X', '4X', '5X')) {drawWinLine(50, 304, 558, 304) }
@@ -58,7 +54,7 @@ function checkWinConditions() {
   else if (arrayIncludes('0O', '4O', '8O')) {drawWinLine(100, 100, 520, 520) }
   else if (selectedSquares.length >= 9) {
         audio('./media/tie.mp3');
-        setTimeout(function (){ resetGame(); }, 1000);
+        setTimeout(function () { resetGame(); }, 500);
     }
 }
 
@@ -81,7 +77,7 @@ function computersTurn(){
 }
 
 function disableClick() {
-    document.body.style.pointerEvents = 'none';
+    body.style.pointerEvents = 'none' ;
     setTimeout(function() { document.body.style.pointerEvents = 'auto'; }, 1000);
 }
 
@@ -136,6 +132,5 @@ function resetGame() {
         let square = document.getElementById(String(i));
         square.style.backgroundImage = '';
     }
-    selectedSquares = []; // clear selected squares
-    activePlayer = 'X'; // reset the active player to X
+    selectedSquares = [];
 }

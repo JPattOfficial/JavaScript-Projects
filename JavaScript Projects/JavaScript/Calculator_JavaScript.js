@@ -20,7 +20,7 @@ function Input_Decimal(dot) {
     if (!Calculator.Display_Value.includes(dot)) {
         Calculator.Display_Value += dot;
     }
-}   
+}
 
 function Handle_Operator(Next_Operator) {
     const { First_Operand, Display_Value, operator } = Calculator;
