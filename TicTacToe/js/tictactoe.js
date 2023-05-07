@@ -22,8 +22,6 @@ function placeXOrO(squareNumber) {
         }
         return true;
     }
-    return false; // Add this to indicate that the square has not been placed
-
     function computersTurn() {
         let success = false;
         let pickASquare;
@@ -31,10 +29,12 @@ function placeXOrO(squareNumber) {
             pickASquare = String(Math.floor(Math.random() * 9));
             if (placeXOrO(pickASquare)){
                 placeXOrO(pickASquare);
+                success = true;
             };
         }
     }
 }
+
 function checkWinConditions() {
   if (arrayIncludes('0X', '1X', '2X')) { drawWinLine(50, 100, 558, 100) }
   else if (arrayIncludes('3X', '4X', '5X')) {drawWinLine(50, 304, 558, 304) }
@@ -56,13 +56,12 @@ function checkWinConditions() {
         audio('./media/tie.mp3');
         setTimeout(function () { resetGame(); }, 500);
     }
-}
-
-function arrayIncludes(squareA, squareB, squareC) {
-    const a = selectedSquares.includes(squareA);
-    const b = selectedSquares.includes(squareB);
-    const c = selectedSquares.includes(squareC);
-    if (a === true && b === true && c === true) { return true; }
+    function arrayIncludes(squareA, squareB, squareC) {
+        const a = selectedSquares.includes(squareA);
+        const b = selectedSquares.includes(squareB);
+        const c = selectedSquares.includes(squareC);
+        if (a === true && b === true && c === true) { return true; }
+    }
 }
 
 function computersTurn(){
@@ -116,10 +115,10 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
             if (x >= x2 && y <= y2) { cancelAnimationFrame(animationLoop); }
         }
     }
-    
     function clear() {
         const animationLoop = requestAnimationFrame(clear);
         c.clearRect(0, 0, 608, 608);
+        cancelAnimationFrame(animationLoop);
     }
     disableClick();
     audio('./media/winGame.mp3');
