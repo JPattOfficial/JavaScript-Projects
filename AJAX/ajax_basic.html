@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Basic AJAX Demo</title>
+		<link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="main">
+			<h2>Get The Latest Content:</h2>
+			<div class='content' id="content">
+				<input type="button" class="button" value="Get Content" id="btn_content" onclick="getContent();"/>
+                <p>This is an AJAX example</p>
+			</div>
+            <div>
+                <button type="submit" onclick="getConent()" class="button" value="Get ajax_basic" id="btn_ajax">Display AJAX Example</button>
+              </div>
+		<script type="text/javascript">
+            var html1 = new XMLHttpRequest();
+                html1.open('GET', 'content.html');
+                html1.onreadystatechange = function() {
+            if (html1.readyState == 4) {
+                document.getElementById('content').innerHTML = html1.responseText;
+                // Process the received data (html.responseText or html1.responseXML)
+                }
+            };
+            function getContent() {
+                html1.send();
+                document.getElementById('content').style.display = 'none';
+            }
+		</script>
+    </body>
+</html>
