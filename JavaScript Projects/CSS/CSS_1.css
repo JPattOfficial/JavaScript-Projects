@@ -1,0 +1,22 @@
+input[type=text] {
+    width: 25%;
+    border-radius: 10px;
+    border-color: black;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+}
+
+label {
+    font-style: Times New Roman;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+form {
+    background-color: rgb(37, 227, 227);
+    background-size: 25%;
+}
+
+button {
+    position: relative;
+}

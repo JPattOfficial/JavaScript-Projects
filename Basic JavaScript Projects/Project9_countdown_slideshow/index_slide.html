@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Picture Slideshow</title>
+        <script src="./JS/main_slide.js"defer></script>
+        <link rel="stylesheet" href="./CSS/style_slide.css">
+    </head>
+    <body>
+
+        <div class="slideshow-container">
+            <div class="mySlides Fade">
+                <div class="numbertext">1 / 3</div>
+                    <img src="./images/car1.jpg" style="width:100%">
+                <div class="text">Old Sports Car</div>
+            </div>
+            <div class="mySlides Fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="./images/car2.jpg" style="width:100%">
+                <div class="text">Old Sports Car with Top Up</div>
+            </div>
+            <div class="mySlides Fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="./images/car3.jpg" style="width:100%">
+                <div class="text">Old Sports Car with Top Down</div>
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+
+    </body>
+</html>

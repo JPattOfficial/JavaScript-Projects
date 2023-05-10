@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Switching</title>
+        <script src="JavaScript_1.js"></script>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="favicon.ico">
+    </head>
+    <body>
+        <h1>What is your favorite color?</h1>
+        <h3>Pick your favorite color from this list:</h3>
+        <ul>
+            <li>Red</li>
+            <li>Yellow</li>
+            <li>Green</li>
+            <li>Blue</li>
+            <li>Pink</li>
+            <li>Purple</li>
+        </ul>
+        <h3>Enter your choice below:</h3>
+
+        <input id="Color_Input" type="text">
+        <button onclick="Color_Function()">Submit Color</button>
+        <p class="Output"></p>
+
+        <canvas id="canvas" width="500" height="250"></canvas>
+
+        <script>
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+            
+            // Create gradient
+            var grd = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
+            grd.addColorStop(0, "blue");
+            grd.addColorStop(1, "black");
+            
+            // Fill with gradient
+            ctx.fillStyle = grd;
+            ctx.fillRect(10, 10, 150, 80);
+            </script>
+
+    </body>
+</html>
