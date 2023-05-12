@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>JSON Parse Example</title>
+    </head>
+    <body>
+        <p id-"myDog"></p>
+
+        <script>
+            var dog = '("name": "Dax", "breed": "Great Pyrenees", "color": "White")';
+            var JSONstring = JSON.parse(dog);
+            document.getElementById("myDog").innerHTML = JSONstring.name + " the " + JSONstring.breed;
+
+            localStorage.setItem("Name", Dax);
+            document.getElementById("myDog").innerHTML = localStorage.getItem("Name");
+        </script>
+    </body>
+</html>
