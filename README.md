@@ -1,5 +1,3 @@
-s
-
 These are some small projects I made using JavaScript.
 
 Projects
